@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using Cinemachine.Utility;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKitchenObjectParent
 {
     public static Player Instance { get; private set; }
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
@@ -17,10 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float _movementSpeed = 0;
     [SerializeField] private GameInput _gameInput;
     [SerializeField] private LayerMask _countersLayerMask;
+    [SerializeField] private Transform _kitchenObjectHoldPoint = null;
 
     private bool _isWalking = false;
     private Vector3 _lastInteractDirection = new Vector3();
     private ClearCounter _selectedCounter = null;
+    private KitchenObject _kitchenObject = null;
 
     private void Awake()
     {
@@ -148,9 +151,33 @@ public class Player : MonoBehaviour
     {
         if (_selectedCounter != null)
         {
-            _selectedCounter.Interact();
+            _selectedCounter.Interact(this);
         }
     }
 
-    
+
+    public Transform GetKitchenObjectFollowTransform()
+    {
+        return _kitchenObjectHoldPoint;
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject)
+    {
+        _kitchenObject = kitchenObject;
+    }
+
+    public KitchenObject GetKitchenObject()
+    {
+        return _kitchenObject;
+    }
+
+    public void ClearKitchenObject()
+    {
+        _kitchenObject = null;
+    }
+
+    public bool HasKitchenObject()
+    {
+        return _kitchenObject != null;
+    }
 }
