@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &11792324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4936648691030437354, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011761860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcea80679aecf459d9ec1564921bc599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &195157296
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1002,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936648691030437354, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
+        type: 3}
+      propertyPath: _tomatoPrefab
+      value: 
+      objectReference: {fileID: 5155952271362456286, guid: fe070dd504de14d13b806fdc48607fe8,
+        type: 3}
+    - target: {fileID: 4936648691030437354, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
+        type: 3}
+      propertyPath: _kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d1adb388d44754be485bd52dd1ca9a1e,
+        type: 2}
     - target: {fileID: 8360112169882516262, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
         type: 3}
       propertyPath: m_Name
@@ -1059,6 +1083,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936648691030437354, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
+        type: 3}
+      propertyPath: _secondClearCounter
+      value: 
+      objectReference: {fileID: 11792324}
     - target: {fileID: 8360112169882516262, guid: e6ccf7d4e4395484898e7a9c59e0c0b4,
         type: 3}
       propertyPath: m_Name
