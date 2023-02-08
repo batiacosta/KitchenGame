@@ -35,7 +35,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     }
     private void Start()
     {
-        _gameInput.OnInteractAction += GameInputOnInteraction;
+        _gameInput.OnInteractAction += GameInputOnInterAction;
+        _gameInput.OnInteractAlternAction += OnInteractAlternAction;
     }
     
     private void Update()
@@ -146,15 +147,22 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         });
     }
 
-    private void GameInputOnInteraction(object sender, EventArgs e)
+    private void GameInputOnInterAction(object sender, EventArgs e)
     {
         if (_selectedCounter != null)
         {
             _selectedCounter.Interact(this);
         }
     }
-
-
+    
+    private void OnInteractAlternAction(object sender, EventArgs e)
+    {
+        if (_selectedCounter != null)
+        {
+            _selectedCounter.InteractAlternate(this);
+        }
+    }
+    
     public Transform GetKitchenObjectFollowTransform()
     {
         return _kitchenObjectHoldPoint;
