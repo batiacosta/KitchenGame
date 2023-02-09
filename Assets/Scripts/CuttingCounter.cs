@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,13 @@ public class CuttingCounter : BaseCounter
     [SerializeField] private CuttingRecipeSO[] _cuttingRecipeSOArray;
 
     private int _cuttingProgress = 0;
+
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+
+    public class OnProgressChangedEventArgs : EventArgs
+    {
+        public float ProgressNormalized;
+    }
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -19,6 +27,12 @@ public class CuttingCounter : BaseCounter
                     //  Player drops something that can be cut
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     _cuttingProgress = 0;
+                    
+                    CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    {
+                        ProgressNormalized  = (float)_cuttingProgress / cuttingRecipeSO.CuttingProgressMax
+                    });
                 }
             }
             else
@@ -43,6 +57,10 @@ public class CuttingCounter : BaseCounter
         {
             _cuttingProgress++;
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            {
+                ProgressNormalized  = (float)_cuttingProgress / cuttingRecipeSO.CuttingProgressMax
+            });
             if (_cuttingProgress >= cuttingRecipeSO.CuttingProgressMax)
             {
                 KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
