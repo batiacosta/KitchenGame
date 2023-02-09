@@ -11,11 +11,12 @@ public class CuttingCounter : BaseCounter
     private int _cuttingProgress = 0;
 
     public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-
     public class OnProgressChangedEventArgs : EventArgs
     {
         public float ProgressNormalized;
     }
+
+    public event EventHandler OnCut;
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -61,6 +62,7 @@ public class CuttingCounter : BaseCounter
             {
                 ProgressNormalized  = (float)_cuttingProgress / cuttingRecipeSO.CuttingProgressMax
             });
+            OnCut?.Invoke(this._cuttingProgress, EventArgs.Empty);
             if (_cuttingProgress >= cuttingRecipeSO.CuttingProgressMax)
             {
                 KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
