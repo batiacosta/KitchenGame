@@ -493,6 +493,7 @@ Transform:
   - {fileID: 530553841}
   - {fileID: 2043477754}
   - {fileID: 2034472376}
+  - {fileID: 2044844615}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1287,6 +1288,86 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuttingCounter
       objectReference: {fileID: 0}
+    - target: {fileID: 7983474411138417507, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: _mode
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 793e1faff1241440988f6ed75e41a5ca, type: 3}
+--- !u!1001 &1435533552
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 323374278}
+    m_Modifications:
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659323482469164426, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: _kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 08e4928c1628541c49ec1e588b3ab231,
+        type: 2}
+    - target: {fileID: 7191102561493266424, guid: 793e1faff1241440988f6ed75e41a5ca,
+        type: 3}
+      propertyPath: m_Name
+      value: CuttingCounter (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 793e1faff1241440988f6ed75e41a5ca, type: 3}
 --- !u!4 &1493749287 stripped
@@ -2071,6 +2152,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425728699015606681, guid: b8a45fb9b35264f778f10c5f132cd0f9,
     type: 3}
   m_PrefabInstance: {fileID: 1785991416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2044844615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3289217219146719850, guid: 793e1faff1241440988f6ed75e41a5ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1435533552}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2046636763 stripped
 Transform:
