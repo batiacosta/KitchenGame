@@ -6,13 +6,14 @@ using UnityEngine.Serialization;
 
 public class CuttingCounter : BaseCounter, IHasProgress
 {
+    public static event EventHandler OnAnyCut;
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+    public event EventHandler OnCut;
+    
     [SerializeField] private CuttingRecipeSO[] _cuttingRecipeSOArray;
 
     private int _cuttingProgress = 0;
-
-    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-
-    public event EventHandler OnCut;
+    
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -68,6 +69,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
                 ProgressNormalized  = (float)_cuttingProgress / cuttingRecipeSO.CuttingProgressMax
             });
             OnCut?.Invoke(this._cuttingProgress, EventArgs.Empty);
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
             if (_cuttingProgress >= cuttingRecipeSO.CuttingProgressMax)
             {
                 KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
