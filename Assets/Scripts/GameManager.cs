@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private float _waitingToStartTimer = 1f;
     private float _countdownToStartTimer = 3f;
     private float _gamePlayingTimer = 10f;
+    
     private void Awake()
     {
         Instance = this;
@@ -70,6 +71,15 @@ public class GameManager : MonoBehaviour
     }
 
     public float GetCountdownToStartTimer()
+    {
+        return _countdownToStartTimer;
+    }
+    public bool IsGameOverActive()
+    {
+        return _state == State.GameOver;
+    }
+
+    public float GetRecipesDelivered()
     {
         return _countdownToStartTimer;
     }
