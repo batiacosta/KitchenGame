@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     private enum State
     {
         WaitingToStart, //  Waiting until all players are connected
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     private float _gamePlayingTimer = 10f;
     private void Awake()
     {
+        Instance = this;
         _state = State.WaitingToStart;
     }
 
@@ -50,5 +52,10 @@ public class GameManager : MonoBehaviour
          case State.GameOver:
              break;
         }
+    }
+
+    public bool IsGamePlaying()
+    {
+        return _state == State.GamePlaying;
     }
 }
