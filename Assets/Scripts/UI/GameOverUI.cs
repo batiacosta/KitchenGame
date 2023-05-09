@@ -2,29 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 
-public class GameStartCountdownUI : MonoBehaviour
+public class GameOverUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI countdownText;
-
+    [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    
     private void Start()
     {
         GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
         Hide();
     }
 
-    private void Update()
-    {
-        countdownText.text = Mathf.Ceil(GameManager.Instance.GetCountdownToStartTimer()).ToString();
-    }
-
     private void GameManager_OnStateChanged(object sender, EventArgs e)
     {
-        if (GameManager.Instance.IsCountdownToStartActive())
+        if (GameManager.Instance.IsGameOverActive())
         {
             Show();
+            recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipedAmount().ToString();
         }
         else
         {
