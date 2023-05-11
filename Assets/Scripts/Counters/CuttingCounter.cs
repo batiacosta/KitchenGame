@@ -6,7 +6,12 @@ using UnityEngine.Serialization;
 
 public class CuttingCounter : BaseCounter, IHasProgress
 {
-    public static event EventHandler OnAnyCut;
+    public static event EventHandler OnAnyCut;  //  Static events need to be manually restarted
+
+    public static void ResetStaticData()
+    {
+        OnAnyCut = null;
+    }
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler OnCut;
     
@@ -69,6 +74,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
                 ProgressNormalized  = (float)_cuttingProgress / cuttingRecipeSO.CuttingProgressMax
             });
             OnCut?.Invoke(this._cuttingProgress, EventArgs.Empty);
+            
             OnAnyCut?.Invoke(this, EventArgs.Empty);
             if (_cuttingProgress >= cuttingRecipeSO.CuttingProgressMax)
             {

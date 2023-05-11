@@ -19,10 +19,8 @@ public class MainMenuUI : MonoBehaviour
         quitButton.onClick.AddListener(() =>
         {
             Application.Quit();
-#if UNITY_EDITOR
-            
-#endif
         });
+        Time.timeScale = 1f;
     }
-    
+
 }
