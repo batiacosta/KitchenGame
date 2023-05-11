@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public event EventHandler OnStateChanged; 
+    public event EventHandler OnStateChanged;
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
     private enum State
     {
         WaitingToStart, //  Waiting until all players are connected
@@ -21,12 +23,24 @@ public class GameManager : MonoBehaviour
     private float _countdownToStartTimer = 3f;
     private float _gamePlayingTimer;
     private float _gamePlayingTimerMax = 10f;
+    private bool _isPaused = false;
     
     private void Awake()
     {
         Instance = this;
         _state = State.WaitingToStart;
     }
+
+    private void Start()
+    {
+        GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
+    }
+
+    private void OnDestroy()
+    {
+        GameInput.Instance.OnPauseAction -= GameInput_OnPauseAction;
+    }
+
 
     private void Update()
     {
@@ -59,6 +73,25 @@ public class GameManager : MonoBehaviour
              break;
          case State.GameOver:
              break;
+        }
+    }
+    private void GameInput_OnPauseAction(object sender, EventArgs e)
+    {
+        TogglePauseGame();
+    }
+
+    public void TogglePauseGame()
+    {
+        _isPaused = !_isPaused;
+        if (_isPaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnpaused?.Invoke(this, EventArgs.Empty);
         }
     }
 
