@@ -1,15 +1,20 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    [SerializeField] private AudioClipSO audioClipSO;
+    [FormerlySerializedAs("audioClipSO")] [SerializeField] private AudioClipSO audioClipSo;
+
+    private float _volume = 1f;
+    private const string PlayerPrefsSoundEffectsVolume = "SoundEffectsVolume";
 
     private void Awake()
     {
         Instance = this;
+        _volume = PlayerPrefs.GetFloat(PlayerPrefsSoundEffectsVolume);
     }
 
     private void Start()
@@ -25,49 +30,65 @@ public class SoundManager : MonoBehaviour
     private void TrashCounter_OnAnyObjectTrashed(object sender, EventArgs e)
     {
         TrashCounter trashCounter = sender as TrashCounter;
-        PlaySound(audioClipSO.trash, trashCounter.transform.position);
+        PlaySound(audioClipSo.trash, trashCounter.transform.position);
     }
 
     private void BaseCounter_OnAnyObjectPLaced(object sender, EventArgs e)
     {
         BaseCounter baseCounter = sender as BaseCounter;
-        PlaySound(audioClipSO.objectDrop, baseCounter.transform.position);
+        PlaySound(audioClipSo.objectDrop, baseCounter.transform.position);
     }
 
     private void Player_OnPickedSomething(object sender, EventArgs e)
     {
-        PlaySound( audioClipSO.objectPickup, Player.Instance.transform.position);
+        PlaySound( audioClipSo.objectPickup, Player.Instance.transform.position);
     }
 
     private void CuttingCounter_OnAnyCut(object sender, EventArgs e)
     {
         CuttingCounter cuttingCounter = sender as CuttingCounter;
-        PlaySound(audioClipSO.chop, cuttingCounter.transform.position);
+        PlaySound(audioClipSo.chop, cuttingCounter.transform.position);
     }
 
     private void DeliveryManager_OnRecipeFailed(object sender, EventArgs e)
     {
         var position = DeliveryCounter.Instance.transform.position;
-        PlaySound(audioClipSO.deliveryPail, position);
+        PlaySound(audioClipSo.deliveryPail, position);
     }
 
     private void DeliveryManager_OnRecipeSucceed(object sender, EventArgs e)
     {
         var position = DeliveryCounter.Instance.transform.position;
-        PlaySound(audioClipSO.deliverySuccess, position);
+        PlaySound(audioClipSo.deliverySuccess, position);
     }
 
-    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1)
+    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volumeMultiplier = 1)
     {
-        PlaySound(audioClipArray[Random.Range(0, audioClipArray.Length)], position, volume);
+        PlaySound(audioClipArray[Random.Range(0, audioClipArray.Length)], position, volumeMultiplier);
     }
-    private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1)
+    private void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1)
     {
-        AudioSource.PlayClipAtPoint(audioClip, position, volume);
+        AudioSource.PlayClipAtPoint(audioClip, position, volumeMultiplier * _volume);
     }
 
     public void PlayFootstepsSound(Vector3 position, float volume)
     {
-        PlaySound(audioClipSO.footsteps, position, volume);
+        PlaySound(audioClipSo.footsteps, position, volume);
+    }
+
+    public void ChangeVolume()
+    {
+        _volume += 0.1f;
+        if (_volume > 1f)
+        {
+            _volume = 0;
+        }
+        PlayerPrefs.SetFloat(PlayerPrefsSoundEffectsVolume, _volume);
+        PlayerPrefs.Save();
+    }
+
+    public float GetVolume()
+    {
+        return _volume;
     }
 }
