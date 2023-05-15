@@ -25,6 +25,8 @@ public class GameInput : MonoBehaviour
     
     
     private PlayerInputActions _playerInputActions;
+
+    private const string PlayerPrefsBinding = "InputBindings";
     
     private void AlternateInteractPerfomed(InputAction.CallbackContext obj)
     {
@@ -150,6 +152,7 @@ public class GameInput : MonoBehaviour
                 _playerInputActions.Player.Enable();
                 callback.Dispose();
                 OnActionRebound();
+                PlayerPrefs.SetString(PlayerPrefsBinding, _playerInputActions.SaveBindingOverridesAsJson());
             }
         ).Start();
     }
