@@ -41,10 +41,15 @@ public class GameInput : MonoBehaviour
     {
         Instance = this;
         _playerInputActions = new PlayerInputActions();
+        if (PlayerPrefs.HasKey(PlayerPrefsBinding))
+        {
+            _playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PlayerPrefsBinding));
+        }
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Interact.performed += InteractPerformed;
         _playerInputActions.Player.InteractAlternate.performed += AlternateInteractPerfomed;
         _playerInputActions.Player.Pause.performed += PausePerformed;
+        
     }
 
     private void OnDestroy()
