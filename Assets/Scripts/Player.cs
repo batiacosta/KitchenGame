@@ -67,7 +67,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             //  Cannot move towards movementDirection
             //  Attempt to move only on X
             Vector3 movementX = new Vector3(movementDirection.x, 0, 0).normalized;
-            canMove = movementDirection.x != 0 && !Physics.CapsuleCast(
+            canMove = (movementDirection.x < -0.5f || movementDirection.x > 0.5f) && !Physics.CapsuleCast(
                 transform.position,
                 transform.position + Vector3.up * playerHeight,
                 playerRadius, movementX, movementDistance
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             else
             {
                 Vector3 movementZ = new Vector3(0, 0, movementDirection.z).normalized;
-                canMove = movementDirection.z != 0 && !Physics.CapsuleCast(
+                canMove = (movementDirection.z < -0.5f || movementDirection.z > 0.5f) && !Physics.CapsuleCast(
                     transform.position,
                     transform.position + Vector3.up * playerHeight,
                     playerRadius, movementZ, movementDistance
