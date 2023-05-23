@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameOptionsUI : MonoBehaviour
@@ -20,6 +21,9 @@ public class GameOptionsUI : MonoBehaviour
     [SerializeField] private Button interactAltButton;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private Button gamepadInteractAltButton;
+    [SerializeField] private Button gamepadPauseButton;
+    [FormerlySerializedAs("gamepadinteractButton")] [SerializeField] private Button gamepadInteractButton;
     [SerializeField] private TextMeshProUGUI moveUpButtonText;
     [SerializeField] private TextMeshProUGUI moveDownButtonText;
     [SerializeField] private TextMeshProUGUI moveLeftButtonText;
@@ -27,11 +31,14 @@ public class GameOptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactButtonText;
     [SerializeField] private TextMeshProUGUI interactAltButtonText;
     [SerializeField] private TextMeshProUGUI pauseButtonText;
+    [SerializeField] private TextMeshProUGUI gamepadInteractButtonText;
+    [SerializeField] private TextMeshProUGUI gamepadInteractAltButtonText;
+    [SerializeField] private TextMeshProUGUI gamepadPauseButtonText;
     [SerializeField] private TextMeshProUGUI soundEffectsButtonText;
     [SerializeField] private TextMeshProUGUI musicButtonText;
     [SerializeField] private Transform rebindingScreenTransform;
-    
-    
+
+    private Action _onCloseButtonAction;
     
 
     private void Awake()
@@ -50,6 +57,7 @@ public class GameOptionsUI : MonoBehaviour
         });
         closeButton.onClick.AddListener(() =>
         { 
+            _onCloseButtonAction?.Invoke();
             UpdateVisual();
             Hide();
         });
@@ -60,6 +68,9 @@ public class GameOptionsUI : MonoBehaviour
         interactButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Interact); });
         interactAltButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Interact_Alternate); });
         pauseButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Pause); });
+        gamepadInteractButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Gamepad_Interact); });
+        gamepadInteractAltButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Gamepad_InteractAlternate); });
+        gamepadPauseButton.onClick.AddListener(() =>  { RebindBinding(GameInput.Binding.Gamepad_Pause); });
         
         
         
@@ -78,9 +89,11 @@ public class GameOptionsUI : MonoBehaviour
         Hide();
     }
 
-    public void Show()
+    public void Show(Action onCloseButtonAction)
     {
+        _onCloseButtonAction = onCloseButtonAction;
         gameObject.SetActive(true);
+        soundEffectsButton.Select();
     }
 
     public void Hide()
@@ -102,6 +115,9 @@ public class GameOptionsUI : MonoBehaviour
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
         interactAltButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact_Alternate);
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
+        gamepadInteractButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Gamepad_Interact);
+        gamepadInteractAltButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Gamepad_InteractAlternate);
+        gamepadPauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Gamepad_Pause);
     }
 
     private void ShowPressToRebindKey()
