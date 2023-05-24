@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 8276324216225395094}
   - component: {fileID: 102925739422912835}
   - component: {fileID: 1420993991770842511}
+  - component: {fileID: 7513805354332381588}
   m_Layer: 6
   m_Name: StoveWarningUI
   m_TagString: Untagged
@@ -367,6 +368,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7513805354332381588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5673827430537936261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8e6847628464352b68c8e9149fc115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 3
 --- !u!1001 &725627452468338106
 PrefabInstance:
   m_ObjectHideFlags: 0
