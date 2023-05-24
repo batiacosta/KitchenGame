@@ -95,4 +95,9 @@ public class SoundManager : MonoBehaviour
     {
         return _volume;
     }
+
+    public void PlayWarningSound(Vector3 position)
+    {
+        PlaySound(audioClipSo.warning, position);
+    }
 }
