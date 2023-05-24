@@ -2070,7 +2070,7 @@ RectTransform:
   - {fileID: 1463898271}
   - {fileID: 993352708}
   m_Father: {fileID: 1532431882}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4097,6 +4097,8 @@ GameObject:
   m_Component:
   - component: {fileID: 666003879}
   - component: {fileID: 666003880}
+  - component: {fileID: 666003882}
+  - component: {fileID: 666003881}
   m_Layer: 5
   m_Name: TutorialUI
   m_TagString: Untagged
@@ -4130,7 +4132,7 @@ RectTransform:
   - {fileID: 1574553878}
   - {fileID: 1571204886}
   m_Father: {fileID: 1532431882}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4160,6 +4162,38 @@ MonoBehaviour:
   keyGamepadPauseText: {fileID: 2132060125}
   keyGamepadInteractText: {fileID: 904862654}
   keyGamepadInteractAltText: {fileID: 1759076353}
+--- !u!225 &666003881
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666003878}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &666003882
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666003878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bd654d4a66f94eaa9e1fb4174ddde56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &669232594
 GameObject:
   m_ObjectHideFlags: 0
@@ -9726,9 +9760,9 @@ RectTransform:
   - {fileID: 1897095627}
   - {fileID: 281834290}
   - {fileID: 40437142}
+  - {fileID: 666003879}
   - {fileID: 1577556536}
   - {fileID: 300780793}
-  - {fileID: 666003879}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10230,7 +10264,7 @@ RectTransform:
   - {fileID: 409607783}
   - {fileID: 643081550}
   m_Father: {fileID: 1532431882}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13320,6 +13354,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1897095627}
   - component: {fileID: 1897095628}
+  - component: {fileID: 1897095630}
+  - component: {fileID: 1897095629}
   m_Layer: 5
   m_Name: GameStartCountdownUI
   m_TagString: Untagged
@@ -13337,7 +13373,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1561924486}
   m_Father: {fileID: 1532431882}
@@ -13361,6 +13397,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1561924487}
+--- !u!225 &1897095629
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897095626}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &1897095630
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897095626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d11c5115d50a540cca9ca79e71984286, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1898460819
 GameObject:
   m_ObjectHideFlags: 0
