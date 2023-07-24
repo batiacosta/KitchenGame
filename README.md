@@ -12,9 +12,6 @@ The game throws you random recipies from a library of recipes. You as a player c
 
 ![gameplay-kitchenchaos](https://github.com/batiacosta/KitchenGame/assets/34322193/02c62c60-65ac-4aa2-a512-2cd0cf01ca10)
 The kitchen has counter objects which are the type of base counter, container counter (tomatoe, bread, meat, cabbage, etc), cutting counter, stove counter, delivery counter, trash counter.
-
-![gameplay-kitchenchaos](https://github.com/batiacosta/KitchenGame/assets/34322193/d30db197-e36f-4adc-a64a-1d70999a2875)
-
 Counters able to execute actions like Cutting, and Stove counters, they have a progress bar to show the state of the action that is being performed.
 <img width="958" alt="Screenshot 2023-07-24 at 8 49 38 AM" src="https://github.com/batiacosta/KitchenGame/assets/34322193/ee0d15a9-c1f0-40e2-afd9-b54ba9e07617">
 
