@@ -9,8 +9,10 @@ Because the project uses the new Input System package from Unity, it is possible
 <img width="958" alt="Screenshot 2023-07-24 at 8 48 18 AM" src="https://github.com/batiacosta/KitchenGame/assets/34322193/105e11fa-285d-45f6-9ae4-782662ebbb19"><img width="958" alt="Screenshot 2023-07-24 at 8 51 29 AM" src="https://github.com/batiacosta/KitchenGame/assets/34322193/217188a7-2c31-469b-8945-cb3011f4921d">
 ## Gameplay.
 The game throws you random recipies from a library of recipes. You as a player can pick up plates, bread, cheese, tomatoeas, cabagge and meat. 
+
 ![gameplay-kitchenchaos](https://github.com/batiacosta/KitchenGame/assets/34322193/02c62c60-65ac-4aa2-a512-2cd0cf01ca10)
 The kitchen has counter objects which are the type of base counter, container counter (tomatoe, bread, meat, cabbage, etc), cutting counter, stove counter, delivery counter, trash counter.
+
 ![gameplay-kitchenchaos](https://github.com/batiacosta/KitchenGame/assets/34322193/d30db197-e36f-4adc-a64a-1d70999a2875)
 
 Counters able to execute actions like Cutting, and Stove counters, they have a progress bar to show the state of the action that is being performed.
